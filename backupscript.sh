@@ -31,25 +31,25 @@ function menu {
     OPTIONS="Backup Import"
     select opt in $OPTIONS; do
         if [ "$opt" = "Backup" ]; then
-            backup()
+            backup
         elif [ "$opt" = "Import" ]; then
-            import()
+            import
         else
             clear
             echo Bad Option
-            menu()
+            menu
         fi
     done
 }
 
 if [ -z "$1" ]; then
-    menu()
+    menu
 else
     if [ $1 == "-b" ]; then
-        backup()
-    elif [ $1 == "-i" ]
-        import()
+        backup
+    elif [ $1 == "-i" ]; then
+        import
     else
-        usage()
+        usage
     fi
 fi
