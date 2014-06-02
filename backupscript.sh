@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 XAMPP_PATH="/Applications/XAMPP"
 GIT_PATH="/Applications/GitHub.app/Contents/Resources/git/bin"
 DUMP_FILEPREFIX="mysqldump"
@@ -9,6 +8,7 @@ MYSQL_PASS=""
 
 function backup {
     for DB_NAME in ${DATABASES}; do
+        echo Backing up $DB_NAME...
         DUMP_FILENAME=${DUMP_FILEPREFIX}_${DB_NAME}.sql
         ${XAMPP_PATH}/xamppfiles/bin/mysqldump -u${MYSQL_USER} -p${MYSQL_PASS} -l ${DB_NAME} > ${DUMP_FILENAME}
         ${GIT_PATH}/git add ${DUMP_FILENAME}
