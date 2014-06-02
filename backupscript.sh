@@ -26,7 +26,11 @@ function import {
     ${GIT_PATH}/git pull
     for DB_NAME in ${DATABASES}; do
         DUMP_FILENAME=${DUMP_FILEPREFIX}_${DB_NAME}.sql
-        ${XAMPP_PATH}/xamppfiles/bin/mysql -u${MYSQL_USER} -p${MYSQL_PASS} ${DB_NAME} < ${DUMP_FILENAME}
+        if [ "${MYSQL_PASS}" = "" ]; then
+            ${XAMPP_PATH}/xamppfiles/bin/mysql -u${MYSQL_USER} ${DB_NAME} < ${DUMP_FILENAME}
+        else
+            ${XAMPP_PATH}/xamppfiles/bin/mysql -u${MYSQL_USER} -p${MYSQL_PASS} ${DB_NAME} < ${DUMP_FILENAME}
+        fi
     done
 }
 
