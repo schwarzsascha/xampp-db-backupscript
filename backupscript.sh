@@ -11,7 +11,11 @@ function backup {
         echo Backing up ${DB_NAME}...
         DUMP_FILENAME=${DUMP_FILEPREFIX}_${DB_NAME}.sql
         echo ... to file ${DUMP_FILENAME}
-        ${XAMPP_PATH}/xamppfiles/bin/mysqldump -u${MYSQL_USER} -p'${MYSQL_PASS}' -l ${DB_NAME} > ${DUMP_FILENAME}
+        if [ "${MYSQL_PASS}" = "" ]; then
+            ${XAMPP_PATH}/xamppfiles/bin/mysqldump -u${MYSQL_USER} -l ${DB_NAME} > ${DUMP_FILENAME}
+        else
+            ${XAMPP_PATH}/xamppfiles/bin/mysqldump -u${MYSQL_USER} -p${MYSQL_PASS} -l ${DB_NAME} > ${DUMP_FILENAME}
+        fi
         ${GIT_PATH}/git add ${DUMP_FILENAME}
     done
     ${GIT_PATH}/git add $0
