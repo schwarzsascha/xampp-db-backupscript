@@ -23,6 +23,7 @@ function backup {
 }
 
 function import {
+    ${GIT_PATH}/git pull
     for DB_NAME in ${DATABASES}; do
         DUMP_FILENAME=${DUMP_FILEPREFIX}_${DB_NAME}.sql
         ${XAMPP_PATH}/xamppfiles/bin/mysql -u${MYSQL_USER} -p${MYSQL_PASS} ${DB_NAME} < ${DUMP_FILENAME}
