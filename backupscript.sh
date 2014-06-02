@@ -2,12 +2,12 @@
 XAMPP_PATH="/Applications/XAMPP"
 GIT_PATH="/Applications/GitHub.app/Contents/Resources/git/bin"
 DUMP_FILEPREFIX="mysqldump"
-DATABASES=("web1" "web2")
+DATABASES=( "web1" "web2" )
 MYSQL_USER="root"
 MYSQL_PASS=""
 
 function backup {
-    for DB_NAME in ${DATABASES}; do
+    for DB_NAME in "${DATABASES[@]}"; do
         echo Backing up ${DB_NAME}...
         DUMP_FILENAME=${DUMP_FILEPREFIX}_${DB_NAME}.sql
         echo ... to file ${DUMP_FILENAME}

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.16, for osx10.6 (x86_64)
 --
--- Host: localhost    Database: web1
+-- Host: localhost    Database: web2
 -- ------------------------------------------------------
 -- Server version	5.6.16
 
