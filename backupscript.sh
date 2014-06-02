@@ -28,12 +28,14 @@ function usage {
 }
 
 function menu {
-    OPTIONS="Backup Import"
+    OPTIONS="Backup Import Cancel"
     select opt in $OPTIONS; do
         if [ "$opt" = "Backup" ]; then
             backup
         elif [ "$opt" = "Import" ]; then
             import
+        elif [ "$opt" = "Cancel" ]; then
+            exit
         else
             clear
             echo Bad Option
