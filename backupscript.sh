@@ -9,7 +9,7 @@ MYSQL_PASS=""
 function backup {
     for DB_NAME in ${DATABASES}; do
         DUMP_FILENAME=${DUMP_FILEPREFIX}_${DB_NAME}.sql
-        ${XAMPP_PATH}/xamppfiles/bin/mysqldump -l ${DB_NAME} > ${DUMP_FILENAME}
+        ${XAMPP_PATH}/xamppfiles/bin/mysqldump -u${MYSQL_USER} -p${MYSQL_PASS} -l ${DB_NAME} > ${DUMP_FILENAME}
         ${GIT_PATH}/git add ${DUMP_FILENAME}
     done
     ${GIT_PATH}/git add $0
@@ -19,7 +19,7 @@ function backup {
 function import {
     for DB_NAME in ${DATABASES}; do
         DUMP_FILENAME=${DUMP_FILEPREFIX}_${DB_NAME}.sql
-        ${XAMPP_PATH}/xamppfiles/bin/mysql -u${MYSQL_USER} -p${MYSQL_USER} ${DB_NAME} < ${DUMP_FILENAME}
+        ${XAMPP_PATH}/xamppfiles/bin/mysql -u${MYSQL_USER} -p${MYSQL_PASS} ${DB_NAME} < ${DUMP_FILENAME}
     done
 }
 
