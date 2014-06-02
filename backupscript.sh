@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 XAMPP_PATH="/Applications/XAMPP"
 GIT_PATH="/Applications/GitHub.app/Contents/Resources/git/bin"
 DUMP_FILEPREFIX="mysqldump"
