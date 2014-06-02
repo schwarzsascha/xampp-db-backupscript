@@ -8,10 +8,11 @@ MYSQL_PASS=""
 
 function backup {
     for DB_NAME in ${DATABASES}; do
-        echo Backing up $DB_NAME...
+        echo Backing up ${DB_NAME}...
         DUMP_FILENAME=${DUMP_FILEPREFIX}_${DB_NAME}.sql
+        echo ... to file ${DUMP_FILENAME}
         ${XAMPP_PATH}/xamppfiles/bin/mysqldump -u${MYSQL_USER} -p${MYSQL_PASS} -l ${DB_NAME} > ${DUMP_FILENAME}
-        #${GIT_PATH}/git add ${DUMP_FILENAME}
+        ${GIT_PATH}/git add ${DUMP_FILENAME}
     done
     ${GIT_PATH}/git add $0
     ${GIT_PATH}/git commit -m "Autocommit durch Script vom `date`"
